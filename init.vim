@@ -1,5 +1,5 @@
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/nord.nvim'
 Plug 'itchyny/lightline.vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/fzf'
@@ -8,6 +8,12 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'tpope/vim-commentary'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'akinsho/flutter-tools.nvim'
 call plug#end()
 
 " General settings
@@ -34,9 +40,14 @@ set completeopt=menu,menuone,noselect
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set diffopt+=algorithm:histogram
 set diffopt+=indent-heuristic
-set signcolumn=yes
 syntax enable
 filetype plugin indent on
+
+set inccommand=nosplit
+set breakindent
+
+" Workaround for indentline bug https://github.com/lukas-reineke/indent-blankline.nvim/issues/59
+set colorcolumn=99999
 
 let mapleader=" "
 nnoremap <leader>s :split<cr>
@@ -45,3 +56,9 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 noremap Y y$
+
+lua << EOF
+--Remap for dealing with word wrap
+vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
+vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+EOF
