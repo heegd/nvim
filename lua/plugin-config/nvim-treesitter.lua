@@ -1,4 +1,3 @@
-lua << EOF
 -- Treesitter configuration
 -- Parsers must be installed manually via :TSInstall
 require('nvim-treesitter.configs').setup {
@@ -51,4 +50,3 @@ require('nvim-treesitter.configs').setup {
     },
   },
 }
-EOF

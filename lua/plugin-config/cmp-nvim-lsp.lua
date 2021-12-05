@@ -1,4 +1,3 @@
-lua << EOF
 local cmp = require'cmp'
 
 cmp.setup({
@@ -32,5 +31,3 @@ cmp.setup.cmdline('/', {
     { name = 'buffer' }
   }
 })
-
-EOF
