@@ -20,6 +20,7 @@ require('user.telescope')
 require('user.toggleterm')
 require('user.treesitter')
 
-if vim.fn.has('win32') then
+if (vim.fn.has('win32') == 1)
+then
   require('user.windows')
 end
