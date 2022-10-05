@@ -58,4 +58,9 @@ nvim_tree.setup {
       },
     },
   },
+  actions = {
+    change_dir = {
+      enable = false
+    }
+  }
 }

@@ -11,7 +11,6 @@ vim.opt.iskeyword:append("-")
 vim.opt.list = true
 vim.opt.mouse = 'a'
 vim.opt.number = true
-vim.opt.scrolloff = 5
 vim.opt.shiftwidth = 4
 vim.opt.showmatch = true
 vim.opt.sidescrolloff = 5
@@ -24,3 +23,7 @@ vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.wrap = false
+
+-- disable netrw for nvim-tree
+vim.g.loaded = 1
+vim.g.loaded_netrwPlugin = 1

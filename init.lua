@@ -1,6 +1,10 @@
 -- Editor config
 require('user.plugins')
 require('user.options')
+if (vim.fn.has('win32') == 1)
+then
+  require('user.windows')
+end
 require('user.keymaps')
 require('user.autocommands')
 require('user.nord')
@@ -19,8 +23,3 @@ require('user.nvimtree')
 require('user.telescope')
 require('user.toggleterm')
 require('user.treesitter')
-
-if (vim.fn.has('win32') == 1)
-then
-  require('user.windows')
-end
