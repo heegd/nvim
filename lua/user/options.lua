@@ -27,3 +27,8 @@ vim.opt.wrap = false
 -- disable netrw for nvim-tree
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- folding from treesitter
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldlevel = 99
