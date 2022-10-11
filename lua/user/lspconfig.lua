@@ -94,10 +94,16 @@ require('lspconfig')['pyright'].setup{
   }
 }
 
--- Might need to add .cmd for Windows
+-- Need to add cmd to the call for windows
+json_lsp_call = "vscode-json-language-server"
+if (vim.fn.has('win32') == 1)
+then
+  json_lsp_call = json_lsp_call .. ".cmd"
+end
+
 nvim_lsp.jsonls.setup {
   filetypes = { "json" },
-  cmd = { "vscode-json-language-server", "--stdio" },
+  cmd = { json_lsp_call, "--stdio" },
   on_attach = on_attach,
   init_options = {
     provideFormatter = true,
