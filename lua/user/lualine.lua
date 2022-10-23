@@ -23,23 +23,33 @@ local location = {
   padding = 0,
 }
 
-local function hello()
+local function working_directory()
   return vim.fn.getcwd()
 end
 
 lualine.setup {
   options = {
-    globalstatus = false,
+    globalstatus = true,
     icons_enabled = true,
     theme = "nord"
   },
   sections = {
     lualine_a = { 'mode' },
-    lualine_b = {hello},
+    lualine_b = { working_directory },
     lualine_c = {},
-    lualine_x = { filename, 'filetype' },
-    lualine_y = { diagnostics },
-    lualine_z = { location, 'progress' }
+    --[[ lualine_x = { filename, 'filetype' }, ]]
+    --[[ lualine_y = { diagnostics }, ]]
+    --[[ lualine_z = { location, 'progress' } ]]
+  },
+  winbar = {
+    lualine_b = { 'filetype', filename },
+    lualine_c = { diagnostics },
+    lualine_a = { location, 'progress' }
+  },
+  inactive_winbar = {
+    lualine_b = { 'filetype', filename },
+    lualine_c = { diagnostics },
+    lualine_a = { location, 'progress' }
   },
   extensions = {
     'nvim-tree',
