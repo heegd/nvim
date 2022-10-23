@@ -37,19 +37,25 @@ lualine.setup {
     lualine_a = { 'mode' },
     lualine_b = { working_directory },
     lualine_c = {},
-    --[[ lualine_x = { filename, 'filetype' }, ]]
-    --[[ lualine_y = { diagnostics }, ]]
-    --[[ lualine_z = { location, 'progress' } ]]
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   winbar = {
+    lualine_a = { location, 'progress' },
     lualine_b = { 'filetype', filename },
     lualine_c = { diagnostics },
-    lualine_a = { location, 'progress' }
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   inactive_winbar = {
+    lualine_a = { location, 'progress' },
     lualine_b = { 'filetype', filename },
     lualine_c = { diagnostics },
-    lualine_a = { location, 'progress' }
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {},
   },
   extensions = {
     'nvim-tree',
