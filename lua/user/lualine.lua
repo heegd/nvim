@@ -27,6 +27,27 @@ local function working_directory()
   return vim.fn.getcwd()
 end
 
+local function unsaved_buffers()
+  local buffers = vim.fn.getbufinfo()
+  local changed_buffer_count = 0
+
+  for index, buffer in ipairs(buffers) do
+    --[[ print('num: ' .. buffer['bufnr']) ]]
+    --[[ print('name: ' .. buffer['name']) ]]
+    --[[ print('changed: ' .. buffer['changed']) ]]
+
+    if ((buffer['changed'] == 1 and (buffer['listed'] == 1)))
+    then
+      changed_buffer_count = changed_buffer_count + 1
+    end
+  end
+
+  --[[ print('There are ' .. changed_buffer_count .. ' unsaved buffers.') ]]
+  return changed_buffer_count .. ' unsaved buffers'
+end
+
+--[[ unsaved_buffers() ]]
+
 lualine.setup {
   options = {
     globalstatus = true,
@@ -36,7 +57,7 @@ lualine.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { working_directory },
-    lualine_c = {},
+    lualine_c = { unsaved_buffers },
     lualine_x = {},
     lualine_y = {},
     lualine_z = {},
