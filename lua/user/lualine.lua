@@ -29,21 +29,29 @@ end
 
 local function unsaved_buffers()
   local buffers = vim.fn.getbufinfo()
-  local changed_buffer_count = 0
+  local buffer_count = 0
+  local hidden_buffer_count = 0
+  local unsaved_buffer_count = 0
 
   for index, buffer in ipairs(buffers) do
-    --[[ print('num: ' .. buffer['bufnr']) ]]
-    --[[ print('name: ' .. buffer['name']) ]]
-    --[[ print('changed: ' .. buffer['changed']) ]]
-
-    if ((buffer['changed'] == 1 and (buffer['listed'] == 1)))
+    if (buffer['listed'] == 1)
     then
-      changed_buffer_count = changed_buffer_count + 1
+      buffer_count = buffer_count + 1
+
+      if (buffer['changed'] == 1)
+      then
+        unsaved_buffer_count = unsaved_buffer_count + 1
+      end
+
+      if (buffer['hidden'] == 1)
+      then
+        hidden_buffer_count = hidden_buffer_count + 1
+      end
     end
   end
 
-  --[[ print('There are ' .. changed_buffer_count .. ' unsaved buffers.') ]]
-  return changed_buffer_count .. ' unsaved buffers'
+  --[[ print('There are ' .. unsaved_buffer_count .. ' unsaved buffers.') ]]
+  return buffer_count .. 'b ' .. hidden_buffer_count .. 'h ' .. unsaved_buffer_count .. '+'
 end
 
 --[[ unsaved_buffers() ]]
@@ -57,10 +65,10 @@ lualine.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { working_directory },
-    lualine_c = { unsaved_buffers },
+    lualine_c = {},
     lualine_x = {},
     lualine_y = {},
-    lualine_z = {},
+    lualine_z = { unsaved_buffers },
   },
   winbar = {
     lualine_a = { location, 'progress' },
