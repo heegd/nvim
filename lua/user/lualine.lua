@@ -30,7 +30,6 @@ end
 local function unsaved_buffers()
   local buffers = vim.fn.getbufinfo()
   local buffer_count = 0
-  local hidden_buffer_count = 0
   local unsaved_buffer_count = 0
 
   for index, buffer in ipairs(buffers) do
@@ -42,19 +41,12 @@ local function unsaved_buffers()
       then
         unsaved_buffer_count = unsaved_buffer_count + 1
       end
-
-      if (buffer['hidden'] == 1)
-      then
-        hidden_buffer_count = hidden_buffer_count + 1
-      end
     end
   end
 
-  --[[ print('There are ' .. unsaved_buffer_count .. ' unsaved buffers.') ]]
-  return buffer_count .. 'b ' .. hidden_buffer_count .. 'h ' .. unsaved_buffer_count .. '+'
+  return ' ' .. buffer_count .. '   ' .. unsaved_buffer_count
 end
 
---[[ unsaved_buffers() ]]
 
 lualine.setup {
   options = {
