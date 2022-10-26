@@ -61,6 +61,4 @@ require('packer').startup(function()
 
   use {'junegunn/fzf'}
 
-  use {'~/Sandbox/myplugin/'}
-
 end)
