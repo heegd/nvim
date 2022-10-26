@@ -47,6 +47,7 @@ require('packer').startup(function()
   use {'hrsh7th/cmp-path'} -- Path completions
   use {'saadparwaiz1/cmp_luasnip'} -- Snippet completions
   use {'hrsh7th/cmp-nvim-lsp'} -- Lsp completions
+  use {'hrsh7th/cmp-nvim-lsp-signature-help'} -- Lsp signature completion
   use {'hrsh7th/cmp-nvim-lua'} -- Lua completions
 
   -- Lsp
@@ -59,4 +60,7 @@ require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter-context'}
 
   use {'junegunn/fzf'}
+
+  use {'~/Sandbox/myplugin/'}
+
 end)
