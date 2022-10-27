@@ -1,6 +1,18 @@
 local comment = require('Comment')
 
 comment.setup {
+  toggler = {
+    ---Line-comment toggle keymap
+    line = 'gcl',
+    ---Block-comment toggle keymap
+    block = 'gcb',
+  },
+  opleader = {
+    ---Line-comment keymap
+    line = 'gcl',
+    ---Block-comment keymap
+    block = 'gcb',
+  },
   pre_hook = function(ctx)
     local U = require "Comment.utils"
 
