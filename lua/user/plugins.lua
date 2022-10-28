@@ -23,7 +23,6 @@ require('packer').startup(function()
   -- Misc
   use {'shaunsingh/nord.nvim'} -- Nord colorscheme
   use {'windwp/nvim-autopairs'} -- Auto-close pairs
-  use {'nvim-lualine/lualine.nvim'} -- Statusline
   use {'kyazdani42/nvim-tree.lua'} -- File tree
   use {'lukas-reineke/indent-blankline.nvim'} -- Indent lines
   use {'akinsho/flutter-tools.nvim'} -- Flutter dev integration
@@ -32,6 +31,10 @@ require('packer').startup(function()
   use {'moll/vim-bbye'} -- Close buffers without closing windows
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
   use {'nvim-telescope/telescope.nvim'} -- Finder
+
+  -- Statusline
+  use {'nvim-lualine/lualine.nvim'} -- Statusline
+  use {'arkav/lualine-lsp-progress'}
 
   -- Comments
   use {'numToStr/Comment.nvim'}

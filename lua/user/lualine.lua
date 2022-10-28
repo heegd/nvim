@@ -47,7 +47,6 @@ local function unsaved_buffers()
   return ' ' .. buffer_count .. '   ' .. unsaved_buffer_count
 end
 
-
 lualine.setup {
   options = {
     globalstatus = true,
@@ -57,7 +56,7 @@ lualine.setup {
   sections = {
     lualine_a = { 'mode' },
     lualine_b = { working_directory },
-    lualine_c = {},
+    lualine_c = { "lsp_progress" },
     lualine_x = {},
     lualine_y = {},
     lualine_z = { unsaved_buffers },
