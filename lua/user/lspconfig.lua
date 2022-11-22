@@ -77,7 +77,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- dartls is set up through flutter-tools.nvim
 
-require('lspconfig')['pyright'].setup{
+--[[ require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
   capabilities = capabilities,
   setup = setup,
@@ -92,6 +92,11 @@ require('lspconfig')['pyright'].setup{
       }
     }
   }
+} ]]
+
+require('lspconfig')['pylsp'].setup{
+  on_attach = on_attach,
+  capabilities = capabilities
 }
 
 -- Need to add cmd to the call for windows
@@ -116,6 +121,11 @@ nvim_lsp.powershell_es.setup {
   bundle_path = 'C:/Tools/PowerShellEditorServices',
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+nvim_lsp.html.setup{
+  capabilities=capabilities,
+  on_attach=on_attach
 }
 
 local null_ls_status_ok, null_ls = pcall(require, "null-ls")
