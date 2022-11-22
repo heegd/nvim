@@ -96,7 +96,25 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 require('lspconfig')['pylsp'].setup{
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = false
+        },
+        mccabe = {
+          enabled = false
+        },
+        pyflakes = {
+          enabled = false
+        },
+        flake8 = {
+          enabled = true
+        }
+      }
+    }
+  }
 }
 
 -- Need to add cmd to the call for windows
@@ -128,7 +146,7 @@ nvim_lsp.html.setup{
   on_attach=on_attach
 }
 
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+--[[ local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
   return
 end
@@ -143,4 +161,4 @@ null_ls.setup {
     --formatting.stylua,
     diagnostics.flake8,
   },
-}
+} ]]
