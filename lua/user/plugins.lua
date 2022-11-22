@@ -31,6 +31,7 @@ require('packer').startup(function()
   use {'moll/vim-bbye'} -- Close buffers without closing windows
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
   use {'nvim-telescope/telescope.nvim'} -- Finder
+  use {'folke/which-key.nvim'} -- show keybindings
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim'} -- Statusline
@@ -61,7 +62,5 @@ require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use {'nvim-treesitter/nvim-treesitter-context'}
-
-  use {'junegunn/fzf'}
 
 end)
