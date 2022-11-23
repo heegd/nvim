@@ -41,6 +41,8 @@ vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin'
 vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", { noremap = true, silent = true })
 
 -- Terminal
+vim.api.nvim_set_keymap("t", "<esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>ToggleTermSendCurrentLine<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { noremap = true, silent = true })
