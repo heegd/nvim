@@ -23,3 +23,9 @@ vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
     vim.highlight.on_yank { higroup = 'Visual', timeout = 200 }
   end,
 })
+
+-- https://github.com/nvim-telescope/telescope.nvim/issues/699
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "*" },
+  command = "normal zx",
+})
