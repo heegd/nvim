@@ -1,11 +1,20 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
+-- https://github.com/nvim-telescope/telescope.nvim/issues/559
 telescope.setup {
   defaults = {
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
-    preview = false
+    preview = false,
+    mappings = {
+      i = {
+        ["<CR>"] = function()
+          vim.cmd [[:stopinsert]]
+          vim.cmd [[call feedkeys("\<CR>")]]
+        end
+      }
+    }
   },
   pickers = {
     find_files = { theme = "dropdown" },
