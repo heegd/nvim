@@ -10,7 +10,7 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css" } },
+	indent = { enable = true, disable = { "css" } },
 })
 
 require'treesitter-context'.setup() 
