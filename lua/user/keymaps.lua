@@ -11,12 +11,14 @@ vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true 
 vim.g.mapleader = " "
 
 -- Common commands
-vim.api.nvim_set_keymap("n", "<leader>q", "<cmd>q<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>w", "<cmd>w<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>q", ":q<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Q", ":qa<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>w", ":w<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>W", ":wa<cr>", { noremap = true, silent = true })
 
 -- Cursor wrap in wrap mode
-vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true })
+--[[ vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", { noremap = true, expr = true, silent = true }) ]]
+--[[ vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", { noremap = true, expr = true, silent = true }) ]]
 
 -- Windows
 vim.api.nvim_set_keymap("n", "<C-w><Left>", "<C-w><", { noremap = true, silent = true })
@@ -47,16 +49,16 @@ vim.api.nvim_set_keymap("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>",
 vim.api.nvim_set_keymap("x", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { noremap = true, silent = true })
 
 -- Quickfix List
-vim.api.nvim_set_keymap("n", "<leader>co", ":copen<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cc", ":cclose<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cn", ":cnext<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cp", ":cprevious<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Co", ":copen<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Cc", ":cclose<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Cn", ":cnext<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>Cp", ":cprevious<cr>", { noremap = true, silent = true })
 
 -- Location List
-vim.api.nvim_set_keymap("n", "<leader>lo", ":lopen<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lc", ":lclose<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ln", ":lnext<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>lp", ":lprevious<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>co", ":lopen<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cc", ":lclose<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cn", ":lnext<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>cp", ":lprevious<cr>", { noremap = true, silent = true })
 
 -- DAP
 -- vim.api.nvim_set_keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", { noremap = true, silent = true })
