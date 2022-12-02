@@ -7,14 +7,6 @@ telescope.setup {
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
     preview = false,
-    mappings = {
-      i = {
-        ["<CR>"] = function()
-          vim.cmd [[:stopinsert]]
-          vim.cmd [[call feedkeys("\<CR>")]]
-        end
-      }
-    }
   },
   pickers = {
     find_files = { theme = "dropdown" },
