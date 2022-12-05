@@ -10,7 +10,16 @@ configs.setup({
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css" } },
+	indent = { enable = true, disable = { "python", "css", "dart" } },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-v>",
+      node_incremental = "<C-n>",
+      scope_incremental = "<C-s>",
+      node_decremental = "<C-p>",
+    },
+  },
 })
 
 require'treesitter-context'.setup() 

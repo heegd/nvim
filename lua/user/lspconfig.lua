@@ -49,7 +49,7 @@ local config = {
     active = signs, -- show signs
   },
   update_in_insert = true,
-  underline = true,
+  underline = false,
   severity_sort = true,
   float = {
     focusable = true,
@@ -76,6 +76,13 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- dartls is set up through flutter-tools.nvim
+require("flutter-tools").setup{
+  ui = { border = "rounded", },
+  lsp = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+}
 
 --[[ require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
