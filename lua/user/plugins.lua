@@ -29,7 +29,6 @@ require('packer').startup(function()
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
   use {'nvim-telescope/telescope.nvim'} -- Finder
   use {'folke/which-key.nvim'} -- show keybindings
-  use {'lukas-reineke/headlines.nvim'} -- nice formatting for markdown
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim'} -- Statusline

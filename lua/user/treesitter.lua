@@ -14,7 +14,7 @@ configs.setup({
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<C-v>",
+      init_selection = "<leader>v",
       node_incremental = "<C-n>",
       scope_incremental = "<C-s>",
       node_decremental = "<C-p>",
