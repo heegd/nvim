@@ -26,12 +26,10 @@ require('packer').startup(function()
   use {'kyazdani42/nvim-tree.lua'} -- File tree
   use {'lukas-reineke/indent-blankline.nvim'} -- Indent lines
   use {'akinsho/flutter-tools.nvim'} -- Flutter dev integration
-  use {'RRethy/vim-illuminate'} -- Highlight instances under cursor
-  use {'lewis6991/gitsigns.nvim'} -- Git integration
-  use {'moll/vim-bbye'} -- Close buffers without closing windows
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
   use {'nvim-telescope/telescope.nvim'} -- Finder
   use {'folke/which-key.nvim'} -- show keybindings
+  use {'lukas-reineke/headlines.nvim'} -- nice formatting for markdown
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim'} -- Statusline

@@ -29,7 +29,6 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, bufopts)
   --vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-  require('illuminate').on_attach(client)
 end
 
 local signs = {
