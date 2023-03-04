@@ -7,6 +7,11 @@ telescope.setup {
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
     preview = false,
+    mappings = {
+      i = {
+        ["<C-y>"] = actions.select_default,
+      },
+    },
   },
   pickers = {
     find_files = { theme = "dropdown" },
