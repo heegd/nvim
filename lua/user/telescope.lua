@@ -27,3 +27,5 @@ telescope.setup {
     lsp_document_symbols = { theme = "dropdown" }
   }
 }
+
+require('telescope').load_extension('fzf')

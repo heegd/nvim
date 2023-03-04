@@ -27,7 +27,6 @@ require('packer').startup(function()
   use {'lukas-reineke/indent-blankline.nvim'} -- Indent lines
   use {'akinsho/flutter-tools.nvim'} -- Flutter dev integration
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
-  use {'nvim-telescope/telescope.nvim'} -- Finder
   use {'folke/which-key.nvim'} -- show keybindings
 
   -- Statusline
@@ -59,5 +58,9 @@ require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use {'nvim-treesitter/nvim-treesitter-context'}
+
+  -- Telescope
+  use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 end)
