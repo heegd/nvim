@@ -21,7 +21,7 @@ require('packer').startup(function()
   use {'kyazdani42/nvim-web-devicons'}
 
   -- Misc
-  use {'shaunsingh/nord.nvim'} -- Nord colorscheme
+  use {'gbprod/nord.nvim'} -- Nord colorscheme
   use {'windwp/nvim-autopairs'} -- Auto-close pairs
   use {'kyazdani42/nvim-tree.lua'} -- File tree
   use {'lukas-reineke/indent-blankline.nvim'} -- Indent lines
