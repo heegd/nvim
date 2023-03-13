@@ -17,19 +17,18 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts)
   vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
-  vim.keymap.set('n', '<leader>lh', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<leader>ll', vim.diagnostic.setloclist, opts)
-  vim.keymap.set('n', '<leader>lq', vim.diagnostic.setqflist, opts)
+  vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<leader>le', vim.diagnostic.setloclist, opts)
+  vim.keymap.set('n', '<leader>lE', vim.diagnostic.setqflist, opts)
   vim.keymap.set('n', '<leader>lo', vim.lsp.buf.document_symbol, opts)
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, bufopts)
   --vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
-  require('illuminate').on_attach(client)
 end
 
 local signs = {
@@ -49,7 +48,7 @@ local config = {
     active = signs, -- show signs
   },
   update_in_insert = true,
-  underline = true,
+  underline = false,
   severity_sort = true,
   --[[ float = {
     focusable = true,
@@ -76,8 +75,15 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- dartls is set up through flutter-tools.nvim
+require("flutter-tools").setup{
+  ui = { border = "rounded", },
+  lsp = {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+}
 
-require('lspconfig')['pyright'].setup{
+--[[ require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
   capabilities = capabilities,
   setup = setup,
@@ -89,6 +95,29 @@ require('lspconfig')['pyright'].setup{
         diagnosticMode = "workspace",
         typeCheckingMode = "off",
         useLibraryCodeForTypes = true,
+      }
+    }
+  }
+} ]]
+
+require('lspconfig')['pylsp'].setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = false
+        },
+        mccabe = {
+          enabled = false
+        },
+        pyflakes = {
+          enabled = false
+        },
+        flake8 = {
+          enabled = true
+        }
       }
     }
   }
@@ -118,7 +147,12 @@ nvim_lsp.powershell_es.setup {
   capabilities = capabilities,
 }
 
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+nvim_lsp.html.setup{
+  capabilities=capabilities,
+  on_attach=on_attach
+}
+
+--[[ local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
   return
 end
@@ -133,4 +167,4 @@ null_ls.setup {
     --formatting.stylua,
     diagnostics.flake8,
   },
-}
+} ]]

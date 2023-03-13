@@ -7,9 +7,9 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
--- 2 spaces for tabs in Dart, Lua
+-- 2 spaces for tabs in Dart, Lua, yaml
 vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'dart',  'lua'},
+  pattern = { 'dart',  'lua', 'yaml'},
   callback = function()
     vim.opt_local.expandtab = true
     vim.opt_local.shiftwidth = 2

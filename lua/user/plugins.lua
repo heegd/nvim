@@ -26,11 +26,8 @@ require('packer').startup(function()
   use {'kyazdani42/nvim-tree.lua'} -- File tree
   use {'lukas-reineke/indent-blankline.nvim'} -- Indent lines
   use {'akinsho/flutter-tools.nvim'} -- Flutter dev integration
-  use {'RRethy/vim-illuminate'} -- Highlight instances under cursor
-  use {'lewis6991/gitsigns.nvim'} -- Git integration
-  use {'moll/vim-bbye'} -- Close buffers without closing windows
   use {'akinsho/toggleterm.nvim'} -- Popup terminal
-  use {'nvim-telescope/telescope.nvim'} -- Finder
+  use {'folke/which-key.nvim'} -- show keybindings
 
   -- Statusline
   use {'nvim-lualine/lualine.nvim'} -- Statusline
@@ -62,6 +59,8 @@ require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use {'nvim-treesitter/nvim-treesitter-context'}
 
-  use {'junegunn/fzf'}
+  -- Telescope
+  use {'nvim-telescope/telescope.nvim'}
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
 end)
