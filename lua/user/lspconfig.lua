@@ -50,14 +50,9 @@ local config = {
   update_in_insert = true,
   underline = false,
   severity_sort = true,
-  --[[ float = {
-    focusable = true,
-    style = "minimal",
+  float = {
     border = "rounded",
-    source = "always",
-    header = "",
-    prefix = "",
-  }, ]]
+  },
 }
 
 vim.diagnostic.config(config)
