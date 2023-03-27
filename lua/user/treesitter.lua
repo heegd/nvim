@@ -20,6 +20,10 @@ configs.setup({
       node_decremental = "<C-p>",
     },
   },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  }
 })
 
 require'treesitter-context'.setup() 
