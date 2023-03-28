@@ -63,4 +63,14 @@ require('packer').startup(function()
   use {'nvim-telescope/telescope.nvim'}
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
+  use {
+    'quarto-dev/quarto-nvim',
+    requires = {
+      'jmbuhr/otter.nvim',
+      'hrsh7th/nvim-cmp',
+      'neovim/nvim-lspconfig',
+      'nvim-treesitter/nvim-treesitter'
+    },
+  }
+
 end)
