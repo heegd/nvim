@@ -94,7 +94,7 @@ require("flutter-tools").setup{
     }
   }
 } ]]
-
+local util = require 'lspconfig.util'
 require('lspconfig')['pylsp'].setup{
   on_attach = on_attach,
   capabilities = capabilities,
@@ -114,8 +114,12 @@ require('lspconfig')['pylsp'].setup{
           enabled = true
         }
       }
-    }
-  }
+    },
+  },
+  root_dir = function(fname)
+    return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+      util.path.dirname(fname)
+    end,
 }
 
 -- Need to add cmd to the call for windows
