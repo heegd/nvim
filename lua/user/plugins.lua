@@ -53,6 +53,7 @@ require('packer').startup(function()
   -- Lsp
   use {'neovim/nvim-lspconfig'}
   use {'jose-elias-alvarez/null-ls.nvim'}
+  use {'simrat39/symbols-outline.nvim'} -- Lsp symbols outline
 
   -- Treesitter
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}

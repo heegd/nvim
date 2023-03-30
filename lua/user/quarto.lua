@@ -4,7 +4,7 @@ require('quarto').setup({
     languages = { 'r', 'python', 'julia' },
     diagnostics = {
       enabled = true,
-      triggers = { "BufWrite" }
+      triggers = { "BufWrite", "TextChangedI", "BufEnter" }
     },
     completion = {
       enabled = true

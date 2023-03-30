@@ -22,12 +22,14 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>lE', vim.diagnostic.setqflist, opts)
   vim.keymap.set('n', '<leader>lo', vim.lsp.buf.document_symbol, opts)
   vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
   vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
   vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
   vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
   vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
   vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
   vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<leader>lS', ':SymbolsOutline<cr>')
   --vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
 end
 
@@ -144,6 +146,29 @@ nvim_lsp.powershell_es.setup {
   bundle_path = 'C:/Tools/PowerShellEditorServices',
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+nvim_lsp.lua_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        path = runtime_path,
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
 }
 
 nvim_lsp.html.setup{
