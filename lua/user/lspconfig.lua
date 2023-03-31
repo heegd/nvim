@@ -80,7 +80,7 @@ require("flutter-tools").setup{
   }
 }
 
---[[ require('lspconfig')['pyright'].setup{
+require('lspconfig')['pyright'].setup{
   on_attach = on_attach,
   capabilities = capabilities,
   setup = setup,
@@ -95,8 +95,9 @@ require("flutter-tools").setup{
       }
     }
   }
-} ]]
-local util = require 'lspconfig.util'
+}
+
+--[[ local util = require 'lspconfig.util'
 require('lspconfig')['pylsp'].setup{
   on_attach = on_attach,
   capabilities = capabilities,
@@ -122,7 +123,7 @@ require('lspconfig')['pylsp'].setup{
     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
       util.path.dirname(fname)
     end,
-}
+} ]]
 
 -- Need to add cmd to the call for windows
 json_lsp_call = "vscode-json-language-server"
@@ -176,7 +177,7 @@ nvim_lsp.html.setup{
   on_attach=on_attach
 }
 
---[[ local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+local null_ls_status_ok, null_ls = pcall(require, "null-ls")
 if not null_ls_status_ok then
   return
 end
@@ -191,4 +192,4 @@ null_ls.setup {
     --formatting.stylua,
     diagnostics.flake8,
   },
-} ]]
+}
