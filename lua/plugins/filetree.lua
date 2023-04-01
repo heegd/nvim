@@ -1,8 +1,8 @@
 return {
   {
-    'kyazdani42/nvim-tree.lua',
+    "kyazdani42/nvim-tree.lua",
     config = function()
-      local nvim_tree = require('nvim-tree')
+      local nvim_tree = require("nvim-tree")
 
       nvim_tree.setup {
         renderer = {

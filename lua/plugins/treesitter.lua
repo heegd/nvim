@@ -1,9 +1,9 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
     config = function()
-      local configs = require('nvim-treesitter.configs')
+      local configs = require("nvim-treesitter.configs")
 
       configs.setup({
         ensure_installed = { "c", "lua", "vim", "help", "query", "sql", "python", "markdown", "markdown_inline", "html",
@@ -34,12 +34,12 @@ return {
     end
   },
   {
-    'nvim-treesitter/nvim-treesitter-textobjects'
+    "nvim-treesitter/nvim-treesitter-textobjects"
   },
   {
-    'nvim-treesitter/nvim-treesitter-context',
+    "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require 'treesitter-context'.setup()
+      require "treesitter-context".setup()
     end
   }
 }

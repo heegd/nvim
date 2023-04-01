@@ -1,8 +1,8 @@
 return {
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     config = function()
-      local nvim_lsp = require('lspconfig')
+      local nvim_lsp = require("lspconfig")
 
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -11,30 +11,30 @@ return {
       -- after the language server attaches to the current buffer
       local on_attach = function(_, bufnr)
         -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
         local opts = { noremap = true, silent = true }
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-        vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, bufopts)
-        vim.keymap.set('n', '<leader>ld', vim.diagnostic.open_float, opts)
-        vim.keymap.set('n', '<leader>lf', function() vim.lsp.buf.format { async = true } end, bufopts)
-        vim.keymap.set('n', '<leader>ls', vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set('n', '<leader>le', vim.diagnostic.setloclist, opts)
-        vim.keymap.set('n', '<leader>lE', vim.diagnostic.setqflist, opts)
-        vim.keymap.set('n', '<leader>lo', vim.lsp.buf.document_symbol, opts)
-        vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, bufopts)
-        vim.keymap.set('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
-        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
-        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
-        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-        vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set('n', '<leader>lR', vim.lsp.buf.references, bufopts)
-        vim.keymap.set('n', '<leader>lS', ':SymbolsOutline<cr>')
-        --vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, bufopts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+        vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
+        vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
+        vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, bufopts)
+        vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist, opts)
+        vim.keymap.set("n", "<leader>lE", vim.diagnostic.setqflist, opts)
+        vim.keymap.set("n", "<leader>lo", vim.lsp.buf.document_symbol, opts)
+        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
+        vim.keymap.set("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
+        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+        vim.keymap.set("n", "gI", vim.lsp.buf.implementation, bufopts)
+        vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, bufopts)
+        vim.keymap.set("n", "<leader>lS", ":SymbolsOutline<cr>")
+        --vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
       end
 
       local signs = {
@@ -73,7 +73,7 @@ return {
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+      capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
       -- dartls is set up through flutter-tools.nvim
       require("flutter-tools").setup {
@@ -84,7 +84,7 @@ return {
         }
       }
 
-      require('lspconfig')['pyright'].setup {
+      require("lspconfig")["pyright"].setup {
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -100,8 +100,8 @@ return {
         }
       }
 
-      --[[ local util = require 'lspconfig.util'
-      require('lspconfig')['pylsp'].setup{
+      --[[ local util = require "lspconfig.util"
+      require("lspconfig")["pylsp"].setup{
         on_attach = on_attach,
         capabilities = capabilities,
         settings = {
@@ -129,7 +129,7 @@ return {
       } ]]
       -- Need to add cmd to the call for windows
       local json_lsp_call = "vscode-json-language-server"
-      if (vim.fn.has('win32') == 1)
+      if (vim.fn.has("win32") == 1)
       then
         json_lsp_call = json_lsp_call .. ".cmd"
       end
@@ -146,7 +146,7 @@ return {
       }
 
       nvim_lsp.powershell_es.setup {
-        bundle_path = 'C:/Tools/PowerShellEditorServices',
+        bundle_path = "C:/Tools/PowerShellEditorServices",
         on_attach = on_attach,
         capabilities = capabilities,
       }
@@ -157,12 +157,12 @@ return {
         settings = {
           Lua = {
             runtime = {
-              -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-              version = 'LuaJIT',
+              -- Tell the language server which version of Lua you"re using (most likely LuaJIT in the case of Neovim)
+              version = "LuaJIT",
             },
             diagnostics = {
               -- Get the language server to recognize the `vim` global
-              globals = { 'vim' },
+              globals = { "vim" },
             },
             workspace = {
               -- Make the server aware of Neovim runtime files
@@ -183,7 +183,7 @@ return {
     end
   },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    "jose-elias-alvarez/null-ls.nvim",
     config = function()
       local null_ls_status_ok, null_ls = pcall(require, "null-ls")
       if not null_ls_status_ok then
@@ -204,6 +204,6 @@ return {
     end
   },
   {
-    'simrat39/symbols-outline.nvim'
+    "simrat39/symbols-outline.nvim"
   }
 }

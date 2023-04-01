@@ -1,8 +1,8 @@
 return {
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     config = function()
-      local lualine = require('lualine')
+      local lualine = require("lualine")
 
       local filename = {
         "filename",
@@ -13,7 +13,7 @@ return {
       local diagnostics = {
         "diagnostics",
         sources = { "nvim_diagnostic" },
-        symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+        symbols = { error = " ", warn = " ", info = " ", hint = " " },
         colored = true,
         always_visible = false,
       }
@@ -33,18 +33,18 @@ return {
         local unsaved_buffer_count = 0
 
         for _, buffer in ipairs(buffers) do
-          if (buffer['listed'] == 1)
+          if (buffer["listed"] == 1)
           then
             buffer_count = buffer_count + 1
 
-            if (buffer['changed'] == 1)
+            if (buffer["changed"] == 1)
             then
               unsaved_buffer_count = unsaved_buffer_count + 1
             end
           end
         end
 
-        return ' ' .. buffer_count .. '   ' .. unsaved_buffer_count
+        return " " .. buffer_count .. "   " .. unsaved_buffer_count
       end
 
       lualine.setup {
@@ -54,7 +54,7 @@ return {
           theme = "nord"
         },
         sections = {
-          lualine_a = { 'mode' },
+          lualine_a = { "mode" },
           lualine_b = { working_directory },
           lualine_c = { "lsp_progress" },
           lualine_x = {},
@@ -62,29 +62,29 @@ return {
           lualine_z = { unsaved_buffers },
         },
         winbar = {
-          lualine_a = { location, 'progress' },
-          lualine_b = { 'filetype', filename },
+          lualine_a = { location, "progress" },
+          lualine_b = { "filetype", filename },
           lualine_c = { diagnostics },
           lualine_x = {},
           lualine_y = {},
           lualine_z = {},
         },
         inactive_winbar = {
-          lualine_a = { location, 'progress' },
-          lualine_b = { 'filetype', filename },
+          lualine_a = { location, "progress" },
+          lualine_b = { "filetype", filename },
           lualine_c = { diagnostics },
           lualine_x = {},
           lualine_y = {},
           lualine_z = {},
         },
         extensions = {
-          'nvim-tree',
-          'toggleterm'
+          "nvim-tree",
+          "toggleterm"
         }
       }
     end
   },
   {
-    'arkav/lualine-lsp-progress'
+    "arkav/lualine-lsp-progress"
   }
 }

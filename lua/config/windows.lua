@@ -12,11 +12,11 @@ for option, value in pairs(powershell_options) do
   vim.opt[option] = value
 end
 
--- Suspend doesn't work on windows and just locks everything up so remap to no operation.
-vim.api.nvim_set_keymap('n', '<c-z>', "<nop>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '<c-z>', "<nop>", { noremap = true, silent = true })
+-- Suspend doesn"t work on windows and just locks everything up so remap to no operation.
+vim.api.nvim_set_keymap("n", "<c-z>", "<nop>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<c-z>", "<nop>", { noremap = true, silent = true })
 --
--- Reset tmp so that nvim doesn't fail after the windows temp folder is emptied
+-- Reset tmp so that nvim doesn"t fail after the windows temp folder is emptied
 vim.cmd [[
-  let $TMP = 'D:\\Tmp'
+  let $TMP = "D:\\Tmp"
 ]]

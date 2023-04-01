@@ -1,5 +1,5 @@
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'gitcommit', 'markdown' },
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -8,8 +8,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 -- 2 spaces for tabs in Dart, Lua, yaml
-vim.api.nvim_create_autocmd({ 'FileType' }, {
-  pattern = { 'dart', 'lua', 'yaml' },
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "dart", "lua", "yaml" },
   callback = function()
     vim.opt_local.expandtab = true
     vim.opt_local.shiftwidth = 2
@@ -18,8 +18,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 -- Highlight Yanked Text
-vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
-    vim.highlight.on_yank { higroup = 'Visual', timeout = 200 }
+    vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
   end,
 })

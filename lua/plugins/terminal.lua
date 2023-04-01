@@ -1,8 +1,8 @@
 return {
   {
-    'akinsho/toggleterm.nvim',
+    "akinsho/toggleterm.nvim",
     config = function()
-      local toggleterm = require('toggleterm')
+      local toggleterm = require("toggleterm")
 
       toggleterm.setup({
         open_mapping = [[<C-\>]],
