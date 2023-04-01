@@ -24,6 +24,10 @@ vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 vim.opt.wrap = false
 
+-- Set the leader key
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- disable netrw for nvim-tree
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
@@ -31,4 +35,4 @@ vim.g.loaded_netrwPlugin = 1
 -- folding from treesitter
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+vim.opt.foldlevel = 99
