@@ -6,7 +6,7 @@ return {
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "help", "query", "sql", "python", "markdown", "markdown_inline", "html",
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "sql", "python", "markdown", "markdown_inline", "html",
           "dart" },                           -- one of "all" or a list of languages
         ignore_install = { "phpdoc", "json" }, -- List of parsers to ignore installing
         highlight = {
