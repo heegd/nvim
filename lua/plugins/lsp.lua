@@ -1,17 +1,23 @@
 return {
   {
+    "SmiteshP/nvim-navic",
+    dependencies = { "neovim/nvim-lspconfig" }
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       local nvim_lsp = require("lspconfig")
+      local navic = require("nvim-navic")
 
       -- Mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 
       -- Use an on_attach function to only map the following keys
       -- after the language server attaches to the current buffer
-      local on_attach = function(_, bufnr)
+      local on_attach = function(client, bufnr)
         -- Enable completion triggered by <c-x><c-o>
         vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+        navic.attach(client, bufnr)
 
         -- Mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions

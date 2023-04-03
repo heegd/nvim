@@ -3,6 +3,7 @@ return {
     "nvim-lualine/lualine.nvim",
     config = function()
       local lualine = require("lualine")
+      local navic = require("nvim-navic")
 
       local filename = {
         "filename",
@@ -21,6 +22,15 @@ return {
       local location = {
         "location",
         padding = 0,
+      }
+
+      local context = {
+        function()
+          return navic.get_location()
+        end,
+        cond = function()
+          return navic.is_available()
+        end
       }
 
       local function working_directory()
@@ -64,18 +74,18 @@ return {
         winbar = {
           lualine_a = { location, "progress" },
           lualine_b = { "filetype", filename },
-          lualine_c = { diagnostics },
+          lualine_c = { context },
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {},
+          lualine_z = { diagnostics },
         },
         inactive_winbar = {
           lualine_a = { location, "progress" },
           lualine_b = { "filetype", filename },
-          lualine_c = { diagnostics },
+          lualine_c = { context },
           lualine_x = {},
           lualine_y = {},
-          lualine_z = {},
+          lualine_z = { diagnostics },
         },
         extensions = {
           "nvim-tree",
