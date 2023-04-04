@@ -30,7 +30,6 @@ return {
         vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
         vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist, opts)
         vim.keymap.set("n", "<leader>lE", vim.diagnostic.setqflist, opts)
-        vim.keymap.set("n", "<leader>lo", vim.lsp.buf.document_symbol, opts)
         vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
         vim.keymap.set("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
         vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -39,7 +38,7 @@ return {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
         vim.keymap.set("n", "gI", vim.lsp.buf.implementation, bufopts)
         vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, bufopts)
-        vim.keymap.set("n", "<leader>lS", ":SymbolsOutline<cr>")
+        vim.keymap.set("n", "<leader>lo", ":SymbolsOutline<cr>")
         --vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
       end
 
@@ -210,6 +209,9 @@ return {
     end
   },
   {
-    "simrat39/symbols-outline.nvim"
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup()
+    end
   }
 }
