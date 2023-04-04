@@ -1,3 +1,4 @@
 *.log
 plugin/
 spell/
+lazy-lock.json

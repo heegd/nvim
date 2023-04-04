@@ -15,7 +15,7 @@ return {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = { error = " ", warn = " ", info = " ", hint = " " },
-        colored = true,
+        colored = false,
         always_visible = false,
       }
 
