@@ -15,6 +15,7 @@ return {
         direction = "horizontal",
         close_on_exit = true,
         shell = vim.o.shell,
+        size = 25,
       })
     end
   }

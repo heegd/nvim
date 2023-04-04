@@ -6,9 +6,6 @@
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Remap space as leader key
-vim.api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
-
 -- Common commands
 vim.api.nvim_set_keymap("n", "<leader>q", ":q<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>Q", ":qa<cr>", { noremap = true, silent = true })
@@ -18,6 +15,7 @@ vim.api.nvim_set_keymap("n", "<leader>W", ":wa<cr>", { noremap = true, silent = 
 -- Cursor wrap in wrap mode
 --[[ vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? "gk" : "k"", { noremap = true, expr = true, silent = true }) ]]
 --[[ vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? "gj" : "j"", { noremap = true, expr = true, silent = true }) ]]
+--
 -- Windows
 vim.api.nvim_set_keymap("n", "<C-w><Left>", "<C-w><", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-w><Down>", "<C-w>-", { noremap = true, silent = true })
@@ -29,25 +27,25 @@ vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { noremap =
 
 -- Telescope
 vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').loclist()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fq", "<cmd>lua require('telescope.builtin').quickfix()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
-{ noremap = true, silent = true })
+  { noremap = true, silent = true })
 
 -- Terminal
 vim.api.nvim_set_keymap("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
