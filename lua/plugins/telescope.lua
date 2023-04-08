@@ -1,6 +1,14 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "kyazdani42/nvim-web-devicons" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build =
+        "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+      }
+    },
     config = function()
       local telescope = require("telescope")
       local actions = require("telescope.actions")
@@ -33,13 +41,5 @@ return {
 
       telescope.load_extension("fzf")
     end
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-    },
-    build =
-    "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
   }
 }

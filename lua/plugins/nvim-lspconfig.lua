@@ -1,10 +1,11 @@
 return {
   {
-    "SmiteshP/nvim-navic",
-    dependencies = { "neovim/nvim-lspconfig" }
-  },
-  {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      { "SmiteshP/nvim-navic" },
+      { "akinsho/flutter-tools.nvim" },
+      { "hrsh7th/cmp-nvim-lsp" },
+    },
     config = function()
       local nvim_lsp = require("lspconfig")
       local navic = require("nvim-navic")
@@ -185,33 +186,6 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       }
-    end
-  },
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    config = function()
-      local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-      if not null_ls_status_ok then
-        return
-      end
-
-      local formatting = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
-
-      null_ls.setup {
-        debug = false,
-        sources = {
-          formatting.black.with { extra_args = { "--fast" } },
-          --formatting.stylua,
-          diagnostics.flake8,
-        },
-      }
-    end
-  },
-  {
-    "simrat39/symbols-outline.nvim",
-    config = function()
-      require("symbols-outline").setup()
     end
   }
 }
