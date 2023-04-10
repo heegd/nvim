@@ -21,7 +21,7 @@ return {
           languages = { "r", "python", "julia" },
           diagnostics = {
             enabled = true,
-            triggers = { "BufWrite", "TextChangedI", "BufEnter" }
+            triggers = { "BufWritePost" }
           },
           completion = {
             enabled = true

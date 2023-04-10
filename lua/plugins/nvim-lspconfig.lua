@@ -186,6 +186,11 @@ return {
         capabilities = capabilities,
         on_attach = on_attach
       }
+
+      nvim_lsp.marksman.setup{
+        capabilities = capabilities,
+        on_attach = on_attach
+      }
     end
   }
 }
