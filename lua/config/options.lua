@@ -36,3 +36,30 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldlevel = 99
+
+-- diagnostics config
+local signs = {
+  { name = "DiagnosticSignError", text = "" },
+  { name = "DiagnosticSignWarn",  text = "" },
+  { name = "DiagnosticSignHint",  text = "" },
+  { name = "DiagnosticSignInfo",  text = "" },
+}
+
+for _, sign in ipairs(signs) do
+  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+end
+
+local config = {
+  virtual_text = false,       -- disable virtual text
+  signs = {
+    active = signs,           -- show signs
+  },
+  update_in_insert = true,
+  underline = false,
+  severity_sort = true,
+  float = {
+    border = "rounded",
+  },
+}
+
+vim.diagnostic.config(config)

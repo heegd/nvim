@@ -66,6 +66,14 @@ vim.api.nvim_set_keymap("n", "<leader>cc", ":lclose<cr>", { noremap = true, sile
 vim.api.nvim_set_keymap("n", "<leader>cn", ":lnext<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>cp", ":lprevious<cr>", { noremap = true, silent = true })
 
+-- Diagnostics
+vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dL", vim.diagnostic.setqflist, { noremap = true, silent = true })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
+
+
 -- DAP
 -- vim.api.nvim_set_keymap("n", "<leader>db", "<cmd>lua require"dap".toggle_breakpoint()<cr>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>dc", "<cmd>lua require"dap".continue()<cr>", { noremap = true, silent = true })

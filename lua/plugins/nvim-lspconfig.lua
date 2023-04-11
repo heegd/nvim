@@ -10,64 +10,27 @@ return {
       local nvim_lsp = require("lspconfig")
       local navic = require("nvim-navic")
 
-      -- Mappings.
-      -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-
-      -- Use an on_attach function to only map the following keys
-      -- after the language server attaches to the current buffer
       local on_attach = function(client, bufnr)
-        -- Enable completion triggered by <c-x><c-o>
-        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
         navic.attach(client, bufnr)
 
-        -- Mappings.
-        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        -- Enable completion triggered by <c-x><c-o>
+        vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+
         local opts = { noremap = true, silent = true }
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, bufopts)
-        vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts)
         vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format { async = true } end, bufopts)
-        vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
-        vim.keymap.set("n", "<leader>le", vim.diagnostic.setloclist, opts)
-        vim.keymap.set("n", "<leader>lE", vim.diagnostic.setqflist, opts)
-        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
         vim.keymap.set("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+        vim.keymap.set("n", "<leader>lo", ":SymbolsOutline<cr>")
+        vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, bufopts)
+        vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, bufopts)
+        vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help, bufopts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-        vim.keymap.set("n", "gI", vim.lsp.buf.implementation, bufopts)
-        vim.keymap.set("n", "<leader>lR", vim.lsp.buf.references, bufopts)
-        vim.keymap.set("n", "<leader>lo", ":SymbolsOutline<cr>")
+        vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
         --vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
       end
-
-      local signs = {
-        { name = "DiagnosticSignError", text = "" },
-        { name = "DiagnosticSignWarn",  text = "" },
-        { name = "DiagnosticSignHint",  text = "" },
-        { name = "DiagnosticSignInfo",  text = "" },
-      }
-
-      for _, sign in ipairs(signs) do
-        vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-      end
-
-      local config = {
-        virtual_text = false, -- disable virtual text
-        signs = {
-          active = signs,     -- show signs
-        },
-        update_in_insert = true,
-        underline = false,
-        severity_sort = true,
-        float = {
-          border = "rounded",
-        },
-      }
-
-      vim.diagnostic.config(config)
 
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
         border = "rounded",
@@ -187,7 +150,7 @@ return {
         on_attach = on_attach
       }
 
-      nvim_lsp.marksman.setup{
+      nvim_lsp.marksman.setup {
         capabilities = capabilities,
         on_attach = on_attach
       }

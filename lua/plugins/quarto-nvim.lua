@@ -26,7 +26,7 @@ return {
           completion = {
             enabled = true
           }
-        }
+        },
       })
     end
   }
