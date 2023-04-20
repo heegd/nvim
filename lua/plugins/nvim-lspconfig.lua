@@ -152,7 +152,8 @@ return {
 
       nvim_lsp.marksman.setup {
         capabilities = capabilities,
-        on_attach = on_attach
+        on_attach = on_attach,
+        filetypes = { 'markdown', 'quarto' },
       }
     end
   }
