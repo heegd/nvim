@@ -18,12 +18,13 @@ return {
         view = {
           adaptive_size = true,
           side = "left",
+          preserve_window_proportions = true
         },
         actions = {
           change_dir = {
             enable = false
           }
-        }
+        },
       }
     end
   }
