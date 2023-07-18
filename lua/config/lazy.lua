@@ -14,7 +14,6 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup("plugins", {
   dev = {
     path = "~/Sandbox",
-    -- patterns = { "otter.nvim", "quarto-nvim" }, -- Path to dev plugins
   },
   install = { colorscheme = { "nord", "habamax" } },
   rtp = {

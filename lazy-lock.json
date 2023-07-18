@@ -24,12 +24,9 @@
   "nvim-treesitter-textobjects": { "branch": "master", "commit": "8673926519ea61069f9c1366d1ad1949316d250e" },
   "nvim-ts-context-commentstring": { "branch": "main", "commit": "0bf8fbc2ca8f8cdb6efbd0a9e32740d7a991e4c3" },
   "nvim-web-devicons": { "branch": "master", "commit": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e" },
-  "otter.nvim": { "branch": "main", "commit": "131c866ebb56d338affddaffc3f8a642dcce3d51" },
   "plenary.nvim": { "branch": "master", "commit": "9ac3e9541bbabd9d73663d757e4fe48a675bb054" },
-  "quarto-nvim": { "branch": "main", "commit": "9839eed2b7f2151721a0eb820e5a85a547201b63" },
   "symbols-outline.nvim": { "branch": "master", "commit": "512791925d57a61c545bc303356e8a8f7869763c" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "580b6c48651cabb63455e97d7e131ed557b8c7e2" },
   "telescope.nvim": { "branch": "master", "commit": "6258d50b09f9ae087317e392efe7c05a7323492d" },
-  "toggleterm.nvim": { "branch": "main", "commit": "1c5996ee3c30b54751093fe68d40676859e7778f" },
-  "which-key.nvim": { "branch": "main", "commit": "94cb020ff33a1e0e22fac1c41663d2c439741f17" }
+  "toggleterm.nvim": { "branch": "main", "commit": "1c5996ee3c30b54751093fe68d40676859e7778f" }
 }
