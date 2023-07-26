@@ -5,7 +5,8 @@ return {
     priority = 1000,
     config = function()
       require("nord").setup({
-        errors = { mode = "fg" }
+        errors = { mode = "fg" },
+        diff = { mode = "fg" }
       })
 
       vim.cmd [[colorscheme nord]]
