@@ -1,26 +1,17 @@
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+--[[
+normal_mode = "n",
+insert_mode = "i",
+visual_mode = "v",
+visual_block_mode = "x",
+term_mode = "t",
+command_mode = "c"
+]]
 
 -- Common commands
 vim.api.nvim_set_keymap("n", "<leader>q", ":q<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>Q", ":qa<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>w", ":w<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>W", ":wa<cr>", { noremap = true, silent = true })
-
--- Cursor wrap in wrap mode
---[[ vim.api.nvim_set_keymap("n", "k", "v:count == 0 ? "gk" : "k"", { noremap = true, expr = true, silent = true }) ]]
---[[ vim.api.nvim_set_keymap("n", "j", "v:count == 0 ? "gj" : "j"", { noremap = true, expr = true, silent = true }) ]]
---
--- Windows
-vim.api.nvim_set_keymap("n", "<C-w><Left>", "<C-w><", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-w><Down>", "<C-w>-", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-w><Up>", "<C-w>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<C-w><Right>", "<C-w>>", { noremap = true, silent = true })
 
 -- NvimTree
 vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true })
@@ -72,7 +63,6 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { noremap = true, s
 vim.keymap.set("n", "<leader>dL", vim.diagnostic.setqflist, { noremap = true, silent = true })
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
-
 
 -- DAP
 -- vim.api.nvim_set_keymap("n", "<leader>db", "<cmd>lua require"dap".toggle_breakpoint()<cr>", { noremap = true, silent = true })
