@@ -10,15 +10,15 @@ return {
       comment.setup {
         toggler = {
           ---Line-comment toggle keymap
-          line = "gcl",
+          line = "<leader>cl",
           ---Block-comment toggle keymap
-          block = "gcb",
+          block = "<leader>cb",
         },
         opleader = {
           ---Line-comment keymap
-          line = "gcl",
+          line = "<leader>cl",
           ---Block-comment keymap
-          block = "gcb",
+          block = "<leader>cb",
         },
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       }

@@ -64,6 +64,17 @@ vim.keymap.set("n", "<leader>dL", vim.diagnostic.setqflist, { noremap = true, si
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
+-- Snippets
+local ls = require("luasnip")
+vim.keymap.set({ "i" }, "<C-S>e", function() ls.expand() end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-S>n", function() ls.jump(1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-S>p", function() ls.jump(-1) end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<C-S>c", function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, { silent = true })
+
 -- DAP
 -- vim.api.nvim_set_keymap("n", "<leader>db", "<cmd>lua require"dap".toggle_breakpoint()<cr>", { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap("n", "<leader>dc", "<cmd>lua require"dap".continue()<cr>", { noremap = true, silent = true })
