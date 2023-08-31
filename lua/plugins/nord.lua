@@ -8,9 +8,9 @@ return {
         errors = { mode = "fg" },
         diff = { mode = "fg" },
         styles = {
-          comments = { italic = true },
+          comments = { italic = false },
           bufferline = {
-            modified = { italic = true }
+            modified = { italic = false }
           }
         }
       })
