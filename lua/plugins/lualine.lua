@@ -65,7 +65,9 @@ return {
         options = {
           globalstatus = true,
           icons_enabled = true,
-          theme = "nord"
+          theme = "nord",
+          component_separators = { left = '', right = '' },
+          section_separators = { left = '', right = '' },
         },
         sections = {
           lualine_a = { "mode" },
