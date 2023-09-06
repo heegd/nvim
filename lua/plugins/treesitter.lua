@@ -1,27 +1,31 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      { "nvim-treesitter/nvim-treesitter-textobjects" }
-    },
+    event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     config = function()
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "sql", "python", "markdown", "markdown_inline",
-          "html", "dart", "yaml" },
-        sync_install = false,
-        auto_install = false,
-        ignore_install = { "phpdoc", "json" }, -- List of parsers to ignore installing
-        highlight = {
-          enable = true,                       -- false will disable the whole extension
-          disable = {},                        -- list of language that will be disabled
+        ensure_installed = { 
+          "c",
+          "lua",
+          "vim",
+          "vimdoc",
+          "query",
+          "sql",
+          "python",
+          "markdown",
+          "markdown_inline",
+          "html",
+          "dart",
+          "yaml"
         },
-        autopairs = {
-          enable = true,
-        },
-        indent = { enable = true, disable = { "python", "css", "dart" } },
+        sync_install = true,
+        auto_install = true,
+        highlight = { enable = true },
+        autopairs = { enable = true },
+        indent = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {

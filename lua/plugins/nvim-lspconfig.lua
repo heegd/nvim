@@ -1,10 +1,10 @@
 return {
   {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "SmiteshP/nvim-navic" },
-      { "akinsho/flutter-tools.nvim" },
-      { "hrsh7th/cmp-nvim-lsp" },
+      "SmiteshP/nvim-navic",
+      "akinsho/flutter-tools.nvim",
     },
     config = function()
       local nvim_lsp = require("lspconfig")

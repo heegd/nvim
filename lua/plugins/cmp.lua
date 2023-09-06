@@ -1,54 +1,25 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
-      { "hrsh7th/cmp-buffer" },                  -- Buffer completions
-      { "hrsh7th/cmp-path" },                    -- Path completions
-      { "saadparwaiz1/cmp_luasnip" },            -- Snippet completions
-      { "hrsh7th/cmp-nvim-lsp" },                -- Lsp completions
-      { "hrsh7th/cmp-nvim-lsp-signature-help" }, -- Lsp signature completion
-      { "hrsh7th/cmp-nvim-lua" },                -- Lua completions
+      "hrsh7th/cmp-buffer",                  -- Buffer completions
+      "hrsh7th/cmp-path",                    -- Path completions
+      "L3MON4D3/LuaSnip",                    -- Snippet engine
+      "saadparwaiz1/cmp_luasnip",            -- Snippet completions
+      "onsails/lspkind.nvim",                -- vs-code like pictograms
+      "hrsh7th/cmp-nvim-lsp",                -- LSP completions
+      "hrsh7th/cmp-nvim-lsp-signature-help"
     },
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
+      local lspkind = require("lspkind")
 
-      local kind_icons = {
-        Array = "",
-        Boolean = "",
-        Class = "",
-        Color = "",
-        Constant = "",
-        Constructor = "",
-        Enum = "",
-        EnumMember = "",
-        Event = "",
-        Field = "",
-        File = "",
-        Folder = "󰉋",
-        Function = "",
-        Interface = "",
-        Key = "",
-        Keyword = "",
-        Method = "",
-        Module = "",
-        Namespace = "",
-        Null = "󰟢",
-        Number = "",
-        Object = "",
-        Operator = "",
-        Package = "",
-        Property = "",
-        Reference = "",
-        Snippet = "",
-        String = "",
-        Struct = "",
-        Text = "",
-        TypeParameter = "",
-        Unit = "",
-        Value = "",
-        Variable = "",
-      }
+      -- Snippen sources
+      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_lua").lazy_load({paths={"./snippets"}})
+      require("luasnip").filetype_extend("dart", {"flutter"})
 
       cmp.setup({
         snippet = {
@@ -61,18 +32,10 @@ return {
           ["<C-e>"] = cmp.mapping({ i = cmp.mapping.abort(), c = cmp.mapping.close() }),
         }),
         formatting = {
-          fields = { "kind", "abbr", "menu" },
-          format = function(entry, vim_item)
-            vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-            vim_item.menu = ({
-              nvim_lsp = "[LSP]",
-              nvim_lua = "[Lua]",
-              luasnip = "[LuaSnip]",
-              buffer = "[Buffer]",
-              path = "[Path]",
-            })[entry.source.name]
-            return vim_item
-          end,
+          format = lspkind.cmp_format({
+            maxsidth = 50,
+            ellipsis_char = "..."
+          }),
         },
         sources = {
           { name = "nvim_lsp" },
@@ -81,15 +44,14 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
-          { name = "otter" },
         },
         confirm_opts = {
           behavior = cmp.ConfirmBehavior.Replace,
           select = false,
         },
         window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          -- completion = cmp.config.window.bordered(),
+          -- documentation = cmp.config.window.bordered(),
         },
         experimental = {
           native_menu = false,

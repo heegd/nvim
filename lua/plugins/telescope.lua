@@ -1,13 +1,15 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
     dependencies = {
-      { "kyazdani42/nvim-web-devicons" },
+      "nvim-tree/nvim-web-devicons",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build =
         "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
-      }
+      },
+      "nvim-tree/nvim-web-devicons"
     },
     config = function()
       local telescope = require("telescope")
@@ -25,18 +27,18 @@ return {
             },
           },
         },
-        pickers = {
-          find_files = { theme = "dropdown" },
-          buffers = { theme = "dropdown" },
-          commands = { theme = "dropdown" },
-          diagnostics = { theme = "dropdown" },
-          live_grep = { theme = "dropdown" },
-          help_tags = { theme = "dropdown" },
-          loclist = { theme = "dropdown" },
-          quickfix = { theme = "dropdown" },
-          lsp_references = { theme = "dropdown" },
-          lsp_document_symbols = { theme = "dropdown" }
-        }
+        -- pickers = {
+        --   find_files = { theme = "dropdown" },
+        --   buffers = { theme = "dropdown" },
+        --   commands = { theme = "dropdown" },
+        --   diagnostics = { theme = "dropdown" },
+        --   live_grep = { theme = "dropdown" },
+        --   help_tags = { theme = "dropdown" },
+        --   loclist = { theme = "dropdown" },
+        --   quickfix = { theme = "dropdown" },
+        --   lsp_references = { theme = "dropdown" },
+        --   lsp_document_symbols = { theme = "dropdown" }
+        -- }
       }
 
       telescope.load_extension("fzf")

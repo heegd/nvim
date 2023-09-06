@@ -22,6 +22,8 @@ vim.opt.splitright = true
 vim.opt.swapfile = false
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
+vim.opt.timeout = true
+vim.opt.timeoutlen = 500
 vim.opt.wrap = false
 
 -- Set the leader key

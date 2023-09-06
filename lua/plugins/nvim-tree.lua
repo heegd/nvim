@@ -1,8 +1,8 @@
 return {
   {
-    "kyazdani42/nvim-tree.lua",
+    "nvim-tree/nvim-tree.lua",
     dependencies = {
-      { "kyazdani42/nvim-web-devicons" }
+      { "nvim-tree/nvim-web-devicons" }
     },
     config = function()
       local nvim_tree = require("nvim-tree")
@@ -10,6 +10,17 @@ return {
       nvim_tree.setup {
         renderer = {
           root_folder_modifier = ":t",
+          indent_markers = {
+            enable = true
+          },
+          icons = {
+            glyphs = {
+              folder = {
+                arrow_closed = "", -- arrow when folder is closed
+                arrow_open = "", -- arrow when folder is open
+              },
+            },
+          },
         },
         diagnostics = {
           enable = true,
