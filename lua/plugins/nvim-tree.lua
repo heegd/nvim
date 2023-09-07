@@ -37,6 +37,9 @@ return {
           }
         },
       }
+
+      local keymap = vim.keymap
+      keymap.set("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { desc = "File tree" })
     end
   }
 }

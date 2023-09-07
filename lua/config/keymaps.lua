@@ -7,81 +7,31 @@ term_mode = "t",
 command_mode = "c"
 ]]
 
+local keymap = vim.keymap
+
 -- Common commands
-vim.api.nvim_set_keymap("n", "<leader>q", ":q<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>Q", ":qa<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>w", ":w<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>W", ":wa<cr>", { noremap = true, silent = true })
-
--- NvimTree
-vim.api.nvim_set_keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true })
-
--- Telescope
-vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fc", "<cmd>lua require('telescope.builtin').commands()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>lua require('telescope.builtin').diagnostics()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fl", "<cmd>lua require('telescope.builtin').loclist()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fq", "<cmd>lua require('telescope.builtin').quickfix()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>",
-  { noremap = true, silent = true })
-
--- Terminal
-vim.api.nvim_set_keymap("t", "<C-[>", "<C-\\><C-n>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>ts", "<cmd>ToggleTermSendCurrentLine<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("x", "<leader>ts", ":ToggleTermSendVisualSelection<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>q", ":q<cr>", { desc = "Quit" })
+keymap.set("n", "<leader>Q", ":qa<cr>", { desc = "Quit all" })
+keymap.set("n", "<leader>w", ":w<cr>", { desc = "Write" })
+keymap.set("n", "<leader>W", ":wa<cr>", { desc = "Write all" })
 
 -- Quickfix List
-vim.api.nvim_set_keymap("n", "<leader>Co", ":copen<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>Cc", ":cclose<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>Cn", ":cnext<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>Cp", ":cprevious<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>Co", ":copen<cr>", { noremap = true, silent = true, desc = "Qflist open" })
+keymap.set("n", "<leader>Cc", ":cclose<cr>", { noremap = true, silent = true, desc = "Qflist close" })
+keymap.set("n", "<leader>Cn", ":cnext<cr>", { noremap = true, silent = true, desc = "Qflist next" })
+keymap.set("n", "<leader>Cp", ":cprevious<cr>", { noremap = true, silent = true, desc = "Qflist prev" })
 
 -- Location List
-vim.api.nvim_set_keymap("n", "<leader>co", ":lopen<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cc", ":lclose<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cn", ":lnext<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>cp", ":lprevious<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>co", ":lopen<cr>", { noremap = true, silent = true, desc = "Loclist open" })
+keymap.set("n", "<leader>cc", ":lclose<cr>", { noremap = true, silent = true, desc = "Loclist close" })
+keymap.set("n", "<leader>cn", ":lnext<cr>", { noremap = true, silent = true, desc = "Loclist next" })
+keymap.set("n", "<leader>cp", ":lprevious<cr>", { noremap = true, silent = true, desc = "Loclist prev" })
 
 -- Diagnostics
-vim.keymap.set("n", "<leader>df", vim.diagnostic.open_float, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>dL", vim.diagnostic.setqflist, { noremap = true, silent = true })
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
-
--- Snippets
-local ls = require("luasnip")
-vim.keymap.set({ "i" }, "<C-S>e", function() ls.expand() end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-S>n", function() ls.jump(1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-S>p", function() ls.jump(-1) end, { silent = true })
-vim.keymap.set({ "i", "s" }, "<C-S>c", function()
-  if ls.choice_active() then
-    ls.change_choice(1)
-  end
-end, { silent = true })
-
--- DAP
--- vim.api.nvim_set_keymap("n", "<leader>db", "<cmd>lua require"dap".toggle_breakpoint()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>dc", "<cmd>lua require"dap".continue()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>di", "<cmd>lua require"dap".step_into()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>do", "<cmd>lua require"dap".step_over()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>dO", "<cmd>lua require"dap".step_out()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>dr", "<cmd>lua require"dap".repl.toggle()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>dl", "<cmd>lua require"dap".run_last()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>du", "<cmd>lua require"dapui".toggle()<cr>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("n", "<leader>dt", "<cmd>lua require"dap".terminate()<cr>", { noremap = true, silent = true })
+keymap.set("n", "<leader>df", vim.diagnostic.open_float, { noremap = true, silent = true, desc = "Diagnostics float" })
+keymap.set("n", "<leader>dl", vim.diagnostic.setloclist,
+  { noremap = true, silent = true, desc = "Diagnostics set loclist" })
+keymap.set("n", "<leader>dL", vim.diagnostic.setqflist,
+  { noremap = true, silent = true, desc = "Diagnostics set qflist" })
+keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = true, desc = "Diagnostics prev" })
+keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true, desc = "Diagnostics next" })

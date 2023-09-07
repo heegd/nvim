@@ -3,12 +3,12 @@ return {
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     dependencies = {
-      "hrsh7th/cmp-buffer",                  -- Buffer completions
-      "hrsh7th/cmp-path",                    -- Path completions
-      "L3MON4D3/LuaSnip",                    -- Snippet engine
-      "saadparwaiz1/cmp_luasnip",            -- Snippet completions
-      "onsails/lspkind.nvim",                -- vs-code like pictograms
-      "hrsh7th/cmp-nvim-lsp",                -- LSP completions
+      "hrsh7th/cmp-buffer",       -- Buffer completions
+      "hrsh7th/cmp-path",         -- Path completions
+      "L3MON4D3/LuaSnip",         -- Snippet engine
+      "saadparwaiz1/cmp_luasnip", -- Snippet completions
+      "onsails/lspkind.nvim",     -- vs-code like pictograms
+      "hrsh7th/cmp-nvim-lsp",     -- LSP completions
       "hrsh7th/cmp-nvim-lsp-signature-help"
     },
     config = function()
@@ -16,10 +16,10 @@ return {
       local luasnip = require("luasnip")
       local lspkind = require("lspkind")
 
-      -- Snippen sources
+      -- Snippet sources
       require("luasnip.loaders.from_vscode").lazy_load()
-      require("luasnip.loaders.from_lua").lazy_load({paths={"./snippets"}})
-      require("luasnip").filetype_extend("dart", {"flutter"})
+      require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
+      require("luasnip").filetype_extend("dart", { "flutter" })
 
       cmp.setup({
         snippet = {
@@ -58,6 +58,16 @@ return {
           ghost_text = true
         },
       })
+
+      local keymap = vim.keymap
+      keymap.set({ "i" }, "<C-S>e", function() luasnip.expand() end, { silent = true, desc = "Snippet expand" })
+      keymap.set({ "i", "s" }, "<C-S>n", function() luasnip.jump(1) end, { silent = true, desc = "Snippet next" })
+      keymap.set({ "i", "s" }, "<C-S>p", function() luasnip.jump(-1) end, { silent = true, desc = "Snippet previious" })
+      keymap.set({ "i", "s" }, "<C-S>c", function()
+        if luasnip.choice_active() then
+          luasnip.change_choice(1)
+        end
+      end, { silent = true, desc = "Snippet choice" })
     end
   }
 }
