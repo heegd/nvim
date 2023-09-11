@@ -3,9 +3,11 @@ return {
   event = "VeryLazy",
   init = function()
     vim.o.timeout = true
-    vim.o.timeoutlen = 300
+    vim.o.timeoutlen = 500
   end,
   opts = {
-    registers = false
+    plugins = {
+      registers = false
+    }
   }
 }
