@@ -20,7 +20,9 @@ return {
       -- Snippet sources
       require("luasnip.loaders.from_vscode").lazy_load()
       require("luasnip.loaders.from_lua").lazy_load({ paths = { "./snippets" } })
-      require("luasnip").filetype_extend("dart", { "flutter" })
+      luasnip.filetype_extend("dart", { "flutter" })
+      -- Associate pydoc snippets with the python language. I wonder if this is a bug in friendly-snippets?
+      luasnip.filetype_extend("python", { "pydoc" })
 
       cmp.setup({
         snippet = {
