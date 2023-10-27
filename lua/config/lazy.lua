@@ -14,6 +14,8 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup("plugins", {
   dev = {
     path = "~/Sandbox",
+    patterns = { "read-cmd" },
+    fallback = true
   },
   install = { colorscheme = { "nord", "habamax" } },
   rtp = {

@@ -15,7 +15,11 @@ end
 -- Suspend doesn"t work on windows and just locks everything up so remap to no operation.
 vim.api.nvim_set_keymap("n", "<c-z>", "<nop>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<c-z>", "<nop>", { noremap = true, silent = true })
---
+
+-- Generate and insert GUID
+vim.api.nvim_set_keymap("n", "<leader>rg", ":ReadCmdAfter [guid]::NewGuid().Guid", { noremap = true, silent = true, desc = "Insert GUID after cursor" })
+vim.api.nvim_set_keymap("n", "<leader>rG", ":ReadCmdBefore [guid]::NewGuid().Guid", { noremap = true, silent = true, desc = "Insert GUID after cursor" })
+
 -- Reset tmp so that nvim doesn"t fail after the windows temp folder is emptied
 vim.cmd [[
   let $TMP = "D:\\Tmp"
