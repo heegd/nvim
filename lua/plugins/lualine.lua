@@ -72,7 +72,7 @@ return {
         sections = {
           lualine_a = { "mode" },
           lualine_b = { working_directory },
-          lualine_c = { "lsp_progress" },
+          lualine_c = { "branch", "lsp_progress" },
           lualine_x = {},
           lualine_y = {},
           lualine_z = { unsaved_buffers },
