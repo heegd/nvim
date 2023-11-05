@@ -5,6 +5,7 @@ return {
     priority = 1000,
     config = function()
       require("nord").setup({
+        transparent = true,
         errors = { mode = "fg" },
         diff = { mode = "fg" },
         styles = {
